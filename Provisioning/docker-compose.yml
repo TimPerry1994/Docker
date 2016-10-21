@@ -47,7 +47,7 @@ nexus:
  tty: true
 
 mysql:
- build: ./Zabbix/mysql
+ image: mysql:8
  ports:
   - "3306:3306"
  environment:
