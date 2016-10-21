@@ -1,0 +1,10 @@
+FROM ubuntu:14.04
+
+MAINTAINER Tim Perry
+
+RUN sudo apt-get update -y
+RUN sudo apt-get install wget -y
+RUN echo "vagrant" | sudo apt-get install mysql-server -y
+RUN sudo wget http://dev.mysql.com/get/mysql-apt-config_0.6.0-1_all.deb
+RUN echo "3" | dpkg -i mysql-apt-config_0.6.0-1_all.deb
+

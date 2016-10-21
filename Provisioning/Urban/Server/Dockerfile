@@ -1,0 +1,7 @@
+FROM maven
+MAINTAINER Tim Perry
+
+WORKDIR /opt
+RUN wget https://www15.software.ibm.com/sdfdl/v2/fulfill/CNEM5EN/Xa.2/Xb.aFmQQe8PD7-qs_Tg8BWRpeStSjxGghohGBYSv_x0fh0/Xc.CNEM5EN/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip/Xd./Xf.LPR.F1AZ/Xg.8840862/Xi.RATLe-UCDeploy-EVAL/XY.regsrvs/XZ.qb0_3wQLmQKxd1E3EPLJ_uXco18/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip
+RUN unzip URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip
+

@@ -1,0 +1,68 @@
+
+java:
+ build: ./Java
+ volumes:
+  - ~/Docker/Provisioning/Java/shared/:/opt/shared/
+
+maven:
+ build: ./Maven
+ volumes:
+  - ~/Docker/Provisioning/Maven/shared/:/opt/shared/
+ links: 
+  - "java"
+
+jenkins:
+ build: ./Jenkins
+ ports: 
+  - "8080:8080"
+ volumes: 
+  - ~/Docker/Provisioning/Jenkins/shared/:/opt/shared/
+ links:
+  - "maven"
+ stdin_open: true
+ tty: true
+
+jira:
+ build: ./Jira
+ ports:
+  - "8082:8082"
+  - "8008:8008"
+ links:
+  - "maven"
+ volumes:
+  - ~/Docker/Provisioning/Jira/shared/:/opt/shared/
+ stdin_open: true
+ tty: true
+
+
+nexus:
+ build: ./Nexus
+ ports:
+  - "8081:8081"
+ volumes: 
+  - ~/Docker/Provisioning/Nexus/shared/:/opt/shared/
+ links:
+  - "maven"
+ stdin_open: true
+ tty: true
+
+mysql:
+ build: ./Zabbix/mysql
+ ports:
+  - "3306:3306"
+ environment:
+  MYSQL_ROOT_PASSWORD: "vagrant"
+ links:
+  - "maven"
+ stdin_open: true
+ tty: true
+
+zabbix:
+ build: ./Zabbix
+ volumes: 
+  - ~/Docker/Provisioning/Zabbix/shared/:/opt/shared/
+ links:
+  - "maven"
+  - "mysql"
+ stdin_open: true
+ tty: true
