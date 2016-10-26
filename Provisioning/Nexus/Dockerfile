@@ -4,9 +4,9 @@ MAINTAINER Tim Perry
 WORKDIR /opt
 RUN wget http://download.sonatype.com/nexus/3/nexus-3.0.2-02-unix.tar.gz
 RUN tar -zxvf nexus-3.0.2-02-unix.tar.gz
-RUN sudo ln -s nexus-3.0.2-02 nexus
+RUN ln -s nexus-3.0.2-02 nexus
 RUN sed -i -e 's/run_as_user=""/run_as_user="root"/g' ./nexus/bin/nexus.rc
-RUN sudo ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
+RUN ln -s /opt/nexus/bin/nexus /etc/init.d/nexus
 
 WORKDIR /etc/init.d
 RUN chmod 755 nexus

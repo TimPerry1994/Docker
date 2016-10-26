@@ -1,13 +1,10 @@
 
 java:
  build: ./Java
- volumes:
-  - ~/Docker/Provisioning/Java/shared/:/opt/shared/
+
 
 maven:
  build: ./Maven
- volumes:
-  - ~/Docker/Provisioning/Maven/shared/:/opt/shared/
  links: 
   - "java"
 
@@ -15,8 +12,6 @@ jenkins:
  build: ./Jenkins
  ports: 
   - "8080:8080"
- volumes: 
-  - ~/Docker/Provisioning/Jenkins/shared/:/opt/shared/
  links:
   - "maven"
  stdin_open: true
@@ -29,8 +24,6 @@ jira:
   - "8008:8008"
  links:
   - "maven"
- volumes:
-  - ~/Docker/Provisioning/Jira/shared/:/opt/shared/
  stdin_open: true
  tty: true
 
@@ -39,8 +32,6 @@ nexus:
  build: ./Nexus
  ports:
   - "8081:8081"
- volumes: 
-  - ~/Docker/Provisioning/Nexus/shared/:/opt/shared/
  links:
   - "maven"
  stdin_open: true
@@ -59,10 +50,28 @@ mysql:
 
 zabbix:
  build: ./Zabbix
- volumes: 
-  - ~/Docker/Provisioning/Zabbix/shared/:/opt/shared/
+ ports:
+  - "8082:80"
+  - "10051:10051"
  links:
   - "maven"
   - "mysql"
  stdin_open: true
  tty: true
+
+zagent:
+ build: ./Zabbix/Agent
+ links:
+  - "maven"
+ ports:
+  - "10050:10050"
+ stdin_open: true
+ tty: true
+
+urban:
+ build: ./Urban/Server
+ links:
+  - "maven"
+ stdin_open: true
+ tty: true
+
