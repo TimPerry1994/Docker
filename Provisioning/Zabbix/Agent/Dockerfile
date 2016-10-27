@@ -10,10 +10,14 @@ RUN groupadd zabbix
 RUN useradd -g zabbix zabbix
 
 RUN apt-get install -y zabbix-agent
-RUN service zabbix-agent start
 
-RUN sed -i '95s/.*/Server=prozab-serv/' /etc/zabbix/zabbix_agentd.conf
-RUN sed -i '136s/.*/ServerActive=prozab-serv/' /etc/zabbix/zabbix_agentd.conf
-#RUN sed -i '147s/.*/Hostname=Zabbix server/' /etc/zabbix/zabbix_agentd.conf
+RUN sed -i '95s/.*/Server=52.211.193.78/' /etc/zabbix/zabbix_agentd.conf
+RUN sed -i '136s/.*/ServerActive=52.211.193.78/' /etc/zabbix/zabbix_agentd.conf
+RUN sed -i '147s/.*/Hostname=zabbix/' /etc/zabbix/zabbix_agentd.conf
+
+ENTRYPOINT service zabbix-agent start && bash
+
 
 EXPOSE 10050
+EXPOSE 80
+EXPOSE 10051
