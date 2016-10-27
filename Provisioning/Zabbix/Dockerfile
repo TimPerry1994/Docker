@@ -21,7 +21,6 @@ RUN service mysql start\
  && mysql -uroot -pvagrant -e "create database zabbix character set utf8 collate utf8_bin; grant all privileges on zabbix.* to zabbix@localhost identified by 'vagrant';"\
  && mysql -uroot -pvagrant -e "grant all privileges on zabbix.* to zabbix@localhost identified by 'vagrant';"
 
-RUN zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz
 
 RUN sed -i "115iDBPassword=vagrant" /etc/zabbix/zabbix_server.conf
 RUN sed -i "89iDBName=zabbix" /etc/zabbix/zabbix_server.conf
@@ -30,6 +29,8 @@ RUN sed -i "81iDBHost=localhost" /etc/zabbix/zabbix_server.conf
 
 RUN sed -i "12iListenPort=10051" /etc/zabbix/zabbix_server.conf
 RUN sed -i "912idate.timezone = "Europe/London"" /etc/php5/apache2/php.ini
+
+RUN service mysql start && zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -uroot -pvagrant zabbix
 
 EXPOSE 80
 EXPOSE 3306

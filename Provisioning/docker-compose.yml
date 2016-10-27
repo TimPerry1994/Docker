@@ -9,6 +9,7 @@ maven:
  build: ./Maven
  links: 
   - "java"
+ stdin_open: true
 
 jenkins:
  build: ./Jenkins
