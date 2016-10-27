@@ -20,15 +20,15 @@ jenkins:
  stdin_open: true
  tty: true
 
-#jira:
-# build: ./Jira
-# ports:
-#  - "8082:8082"
-#  - "8008:8008"
-# links:
-#  - "maven"
-# stdin_open: true
-# tty: true
+jira:
+ build: ./Jira
+ ports:
+  - "8082:8082"
+  - "8008:8008"
+ links:
+  - "maven"
+ stdin_open: true
+ tty: true
 
 
 nexus:
@@ -67,6 +67,7 @@ zagent:
  environment:
   ZA_Server: "http://52.211.193.78/zabbix"
  links:
+  - "zabbix" 
   - "maven"
  ports:
   - "10050:10050"
