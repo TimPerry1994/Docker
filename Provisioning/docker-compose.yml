@@ -1,6 +1,8 @@
 
 java:
  build: ./Java
+ stdin_open: true
+ tty: true
 
 
 maven:
@@ -51,7 +53,7 @@ mysql:
 zabbix:
  build: ./Zabbix
  ports:
-  - "8082:80"
+  - "80:80"
   - "10051:10051"
  links:
   - "maven"
