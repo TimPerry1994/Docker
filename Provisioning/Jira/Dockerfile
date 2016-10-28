@@ -1,6 +1,7 @@
 FROM provisioning_maven
 MAINTAINER Tim Perry
 
+#Download Jira executable file and run it, giving appropriate commands for automatic setup
 WORKDIR /opt/
 VOLUME ~/Docker/Provisioning/Jira/shared:/tmp/shared
 RUN wget https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-7.2.3-x64.bin
