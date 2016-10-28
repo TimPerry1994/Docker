@@ -14,9 +14,7 @@ RUN sed -i '20s/.*/locked\/agent.jms.remote.host=52.211.193.78/' example.agent.i
 RUN cp example.agent.install.properties install.properties
 
 RUN sed -i '30isync' install-agent-from-file.sh && \
-chmod +x install-agent-from-file.sh; sync && ./install-agent-from-file.sh install.properties
+ chmod +x install-agent-from-file.sh; sync && ./install-agent-from-file.sh install.properties
 
-#sed -i '16s/.*/chmod +x "opt\/apache-ant-1.8.4\/bin\/ant"/' install-agent-from-file.sh && 
-
-ENTRYPOINT /opt/urbancode/ibm-ucdagent/bin/agent run && bash
+#ENTRYPOINT /opt/urbancode/ibm-ucdagent/bin/agent run && bash
 

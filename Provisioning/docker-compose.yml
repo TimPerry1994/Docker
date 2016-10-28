@@ -20,15 +20,15 @@ jenkins:
  stdin_open: true
  tty: true
 
-jira:
- build: ./Jira
- ports:
-  - "8082:8082"
-  - "8008:8008"
- links:
-  - "maven"
- stdin_open: true
- tty: true
+#jira:
+ #build: ./Jira
+# ports:
+#  - "8082:8082"
+#  - "8008:8008"
+# links:
+#  - "maven"
+# stdin_open: true
+# tty: true
 
 
 nexus:
