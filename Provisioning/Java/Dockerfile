@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 MAINTAINER Tim Perry
 
 #Install java 1.8 using apt-get.
