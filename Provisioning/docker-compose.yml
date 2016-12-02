@@ -40,40 +40,40 @@ nexus:
  stdin_open: true
  tty: true
 
-mysql:
- image: mysql:8
- ports:
-  - "3306:3306"
- environment:
-  MYSQL_ROOT_PASSWORD: "vagrant"
- links:
-  - "maven"
- stdin_open: true
- tty: true
+#mysql:
+# image: mysql:8
+# ports:
+#  - "3306:3306"
+# environment:
+#  MYSQL_ROOT_PASSWORD: "vagrant"
+# links:
+#  - "maven"
+# stdin_open: true
+# tty: true
 
-zabbix:
- build: ./Zabbix
- ports:
-  - "80:80"
-  - "10051:10051"
- links:
-  - "maven"
-  - "mysql"
- stdin_open: true
- tty: true
+#zabbix:
+# build: ./Zabbix
+# ports:
+#  - "80:80"
+#  - "10051:10051"
+# links:
+#  - "maven"
+#  - "mysql"
+# stdin_open: true
+# tty: true
 
-zagent:
- build: ./Zabbix/Agent
- environment:
-  ZA_Server: "http://52.211.193.78/zabbix"
- links:
-  - "zabbix" 
-  - "maven"
- ports:
-  - "10050:10050"
-  - "10051"
- stdin_open: true
- tty: true
+#zagent:
+# build: ./Zabbix/Agent
+# environment:
+#  ZA_Server: "http://52.211.193.78/zabbix"
+# links:
+#  - "zabbix" 
+#  - "maven"
+# ports:
+#  - "10050:10050"
+#  - "10051"
+# stdin_open: true
+# tty: true
 
 #urban:
 # build: ./Urban/Server
